@@ -1,0 +1,7 @@
+@font-face {
+  font-family: 'NeueHaasDisplay';
+  src: url('/fonts/NeueHaasDisplayMediu.ttf') format('ttf');
+  font-weight: medium;
+  font-style: normal;
+  font-display: swap;
+}
