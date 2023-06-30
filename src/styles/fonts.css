@@ -1,7 +1,7 @@
 @font-face {
   font-family: 'NeueHaasDisplay';
-  src: url('/fonts/NeueHaasDisplayMediu.ttf') format('ttf');
-  font-weight: medium;
+  src: url('/fonts/NeueHaasDisplayMedium.ttf') format('ttf');
+  font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
