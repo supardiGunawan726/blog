@@ -1,6 +1,6 @@
-import { defineCollection, z } from "astro:content";
+import { z, defineCollection } from "astro:content";
 
-const posts = defineCollection({
+export const posts = defineCollection({
   // Type-check frontmatter using a schema
   schema: z.object({
     title: z.string(),

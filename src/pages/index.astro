@@ -2,10 +2,14 @@
 import Page from "../layouts/Page";
 import bgLinesMobile from "../assets/images/pages/home/lines@mobile.png"
 import githubIcon from '../assets/icons/github.svg'
+import BlogList from "../components/BlogList";
+import { getCollection, getEntry } from 'astro:content';
+
+const posts = await getCollection("posts");
 ---
 
 <Page title="Supardi's Blog">
-	<section class="relative">
+	<section class="relative border-b border-b-theme-text/10">
 		<figure class="absolute top-0 left-0 right-0 bottom-0 z-0">
 			<img src={bgLinesMobile.src} width={bgLinesMobile.width} height={bgLinesMobile.height} alt="lines">
 		</figure>
@@ -16,5 +20,8 @@ import githubIcon from '../assets/icons/github.svg'
 				<img src={githubIcon.src} width={githubIcon.width} height={githubIcon.height} alt="Github icon" /> Find me at Github
 			</a>
 		</div>
+	</section>
+	<section class="px-4 py-6">
+		<BlogList posts={posts} client:visible/>
 	</section>
 </Page>
