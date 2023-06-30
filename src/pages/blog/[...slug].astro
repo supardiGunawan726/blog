@@ -1,0 +1,54 @@
+---
+import { CollectionEntry, getCollection } from "astro:content";
+import Page from "../../layouts/Page"
+import me from "../../assets/me.png"
+import * as dateFns from 'date-fns'
+
+export async function getStaticPaths() {
+	const posts = await getCollection('posts');
+	return posts.map((post) => ({
+		params: { slug: post.slug },
+		props: post,
+	}));
+}
+
+type Props = CollectionEntry<'posts'>;
+
+const post = Astro.props;
+const { Content } = await post.render();
+---
+
+<Page title={post.data.title}>
+	<nav class="block p-4 border-b border-b-theme-text/10">
+		<a href="/" class="flex items-center gap-3 text-white text-lg font-Inter font-bold">
+			<img src={me.src} alt="Supardi G" width={me.width} height={me.height} class="w-8 h-8 rounded-full overflow-hidden">
+			Supardi
+		</a>
+	</nav>
+	<section>
+		<header class="pt-4 px-4">
+			<h1 class="font-NeueHaasDisplay text-white font-medium text-[40px] leading-[1.1]">{post.data.title}</h1>
+			<p class="font-Inter text-theme-text text-xl leading-normal mt-3">{post.data.description}</p>
+			<div class="mt-4 flex items-center gap-3">
+				<a href="/" class="flex items-center gap-3 text-white font-Inter font-bold">
+					<img src={me.src} alt="Supardi G" width={me.width} height={me.height} class="w-10 h-10 rounded-full overflow-hidden">
+					Supardi
+				</a>
+				<span class="block w-1 h-1 bg-theme-text rounded-full"></span>
+				<span class="font-Inter font-medium text-xs text-theme-text">{dateFns.format(post.data.createdAt, "MMM dd, yyyy")}</span>
+			</div>
+		</header>
+		<main class="px-4 pt-6">
+			<figure class="rounded-[20px] overflow-hidden">
+				<img src={post.data.image} alt={post.data.title}>
+			</figure>
+			<article class="mt-6 prose-lg prose-p:font-Inter prose-p:text-lg prose-p:text-theme-text prose-headings:font-PlusJakartaSans prose-headings:font-extrabold prose-headings:text-white prose-headings:my-6 prose-h2:text-2xl">
+				<Content/>
+			</article>
+		</main>
+	</section>
+</BlogPost>
+
+<style>
+
+</style>
