@@ -40,7 +40,7 @@ export default function BlogList({ posts, search = true }: Props) {
           />
         </header>
       </Show>
-      <ul>
+      <ul class="flex flex-col gap-8">
         <For each={filteredPosts()}>
           {(post) => (
             <li>
