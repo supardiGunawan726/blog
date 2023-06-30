@@ -1,8 +1,9 @@
 ---
-import { CollectionEntry, getCollection } from "astro:content";
+import { CollectionEntry, getCollection, getEntryBySlug } from "astro:content";
 import Page from "../../layouts/Page"
 import me from "../../assets/me.png"
 import * as dateFns from 'date-fns'
+import BlogList from "../../components/BlogList";
 
 export async function getStaticPaths() {
 	const posts = await getCollection('posts');
@@ -15,40 +16,45 @@ export async function getStaticPaths() {
 type Props = CollectionEntry<'posts'>;
 
 const post = Astro.props;
+const relatedPosts = await Promise.all(post.data.relatedPosts.map((postRef) => getEntryBySlug(postRef.collection, postRef.slug)));
+
 const { Content } = await post.render();
 ---
 
 <Page title={post.data.title}>
 	<nav class="block p-4 border-b border-b-theme-text/10">
-		<a href="/" class="flex items-center gap-3 text-white text-lg font-Inter font-bold">
-			<img src={me.src} alt="Supardi G" width={me.width} height={me.height} class="w-8 h-8 rounded-full overflow-hidden">
-			Supardi
-		</a>
+		<div class="max-w-4xl maxw mx-auto">
+			<a href="/" class="w-max flex items-center gap-3 text-white text-lg font-Inter font-bold">
+				<img src={me.src} alt="Supardi G" width={me.width} height={me.height} class="w-8 h-8 rounded-full overflow-hidden">
+				Supardi
+			</a>
+		</div>
 	</nav>
 	<section>
-		<header class="pt-4 px-4">
-			<h1 class="font-NeueHaasDisplay text-white font-semibold text-[40px] leading-tight">{post.data.title}</h1>
-			<p class="font-Inter text-theme-text text-xl leading-normal mt-3">{post.data.description}</p>
-			<div class="mt-4 flex items-center gap-3">
-				<a href="/" class="flex items-center gap-3 text-white font-Inter font-bold">
-					<img src={me.src} alt="Supardi G" width={me.width} height={me.height} class="w-10 h-10 rounded-full overflow-hidden">
+		<header class="pt-4 px-4 max-w-4xl mx-auto md:pt-[40px] xl:px-0">
+			<h1 class="font-NeueHaasDisplay text-white font-semibold text-[40px] leading-tight md:text-7xl md:leading-tight">{post.data.title}</h1>
+			<p class="font-Inter text-theme-text text-xl leading-normal mt-3 md:text-[28px] md:mt-4">{post.data.description}</p>
+			<div class="mt-4 flex items-center gap-3 md:mt-6 md:gap-6">
+				<a href="/" class="flex items-center gap-3 text-white font-Inter font-bold md:text-2xl md:gap-6">
+					<img src={me.src} alt="Supardi G" width={me.width} height={me.height} class="w-10 h-10 rounded-full overflow-hidden md:w-[60px] md:h-[60px]">
 					Supardi
 				</a>
 				<span class="block w-1 h-1 bg-theme-text rounded-full"></span>
-				<span class="font-Inter font-medium text-xs text-theme-text">{dateFns.format(post.data.createdAt, "MMM dd, yyyy")}</span>
+				<span class="font-Inter font-medium text-xs text-theme-text md:text-xl">{dateFns.format(post.data.createdAt, "MMM dd, yyyy")}</span>
 			</div>
 		</header>
-		<main class="px-4 pt-6">
-			<figure class="rounded-[20px] overflow-hidden">
-				<img src={post.data.image} alt={post.data.title}>
-			</figure>
-			<article class="mt-6 prose-lg prose-p:font-Inter prose-p:text-lg prose-p:text-theme-text prose-headings:font-PlusJakartaSans prose-headings:font-extrabold prose-headings:text-white prose-headings:my-6 prose-h2:text-2xl">
-				<Content/>
-			</article>
+		<main class="border-b border-b-theme-text/10">
+			<div class="px-4 py-6 xl:px-0 md:py-10">
+				<figure class="rounded-[20px] overflow-hidden max-w-4xl mx-auto">
+					<img src={post.data.image} alt={post.data.title}>
+				</figure>
+				<article class="mt-6 max-w-4xl mx-auto prose-lg prose-p:font-Inter prose-p:text-lg md:prose-p:text-2xl prose-p:text-theme-text prose-p:leading-normal md:prose-p:leading-normal prose-headings:font-PlusJakartaSans prose-headings:font-extrabold prose-headings:text-white prose-headings:my-6 prose-h2:text-2xl prose-code:text-base md:prose-code:text-xl">
+					<Content/>
+				</article>
+			</div>
 		</main>
 	</section>
-</BlogPost>
-
-<style>
-
-</style>
+	<section class="px-4 py-6 max-w-[720px] mx-auto">
+		<BlogList posts={relatedPosts}/>
+	</section>
+</Page>

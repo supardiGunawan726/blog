@@ -1,9 +1,10 @@
 ---
 import Page from "../layouts/Page";
 import bgLinesMobile from "../assets/images/pages/home/lines@mobile.png"
+import bgLinesDesktop from "../assets/images/pages/home/lines@desktop.png"
 import githubIcon from '../assets/icons/github.svg'
 import BlogList from "../components/BlogList";
-import { getCollection, getEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
 
 const posts = await getCollection("posts");
 ---
@@ -11,17 +12,18 @@ const posts = await getCollection("posts");
 <Page title="Supardi's Blog">
 	<section class="relative border-b border-b-theme-text/10">
 		<figure class="absolute top-0 left-0 right-0 bottom-0 z-0">
-			<img src={bgLinesMobile.src} width={bgLinesMobile.width} height={bgLinesMobile.height} alt="lines">
+			<img class="sm:hidden" src={bgLinesMobile.src} width={bgLinesMobile.width} height={bgLinesMobile.height} alt="lines">
+			<img class="hidden sm:block" src={bgLinesDesktop.src} width={bgLinesDesktop.width} height={bgLinesDesktop.height} alt="lines">
 		</figure>
-		<div class="relative py-16 px-4 z-10">
-			<h1 class="font-NeueHaasDisplay text-white font-semibold text-5xl max-w-[286px] leading-tight">informatics student, typescript geek, and frontend developer.</h1>
-			<p class="font-Inter text-theme-text leading-normal text-lg mt-4">My name is Pardi, and I'm a frontend developer living in the beautiful country of Indonesia. I'm always up for a challenge and I enjoy learning new technologies and techniques to improve my skills.</p>
-			<a href="https://github.com/supardiGunawan726" rel="noopener" target="_blank" class="flex mt-6 gap-3 text-theme-text font-Inter font-bold leading-normal">
+		<div class="relative py-16 px-4 z-10 md:py-[108px] md:max-w-[1080px] md:mx-auto xl:px-0">
+			<h1 class="font-NeueHaasDisplay text-white font-semibold text-5xl max-w-[286px] leading-tight md:max-w-[580px] md:text-7xl md:leading-tight">informatics student, typescript geek, and frontend developer.</h1>
+			<p class="font-Inter text-theme-text leading-normal text-lg mt-4 md:max-w-[580px]">My name is Pardi, and I'm a frontend developer living in the beautiful country of Indonesia. I'm always up for a challenge and I enjoy learning new technologies and techniques to improve my skills.</p>
+			<a href="https://github.com/supardiGunawan726" rel="noopener" target="_blank" class="w-max flex mt-6 gap-3 text-theme-text font-Inter font-bold leading-normal">
 				<img src={githubIcon.src} width={githubIcon.width} height={githubIcon.height} alt="Github icon" /> Find me at Github
 			</a>
 		</div>
 	</section>
-	<section class="px-4 py-6">
+	<section class="px-4 py-6 max-w-[720px] mx-auto">
 		<BlogList posts={posts} client:visible/>
 	</section>
 </Page>

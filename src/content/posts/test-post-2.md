@@ -1,10 +1,10 @@
 ---
-title: "Any mechanical keyboard enthusiasts in design?"
+title: "Any mechanical keyboard enthusiasts in design? (2)"
 createdAt: "30 Jul 2023"
 image: "/posts/react.png"
 description: "Physiological respiration involves the mechanisms that ensure that the composition of the functional. Maxwell's equations—the foundation of classical electromagnetism—describe light as a wave that moves"
 relatedPosts:
-- test-post-2
+- test-post
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris fermentum, neque a pulvinar consectetur, tellus sem eleifend libero, a sodales dolor velit vel mi. Donec magna nibh, volutpat sit amet ultrices eu, elementum non leo. Phasellus nec mi sit amet tortor cursus vehicula. Quisque quis libero vel quam aliquet dignissim vel eget arcu. Proin a sem felis. Sed congue dignissim nibh, porta vestibulum tortor aliquet eget. Maecenas et est ipsum. Phasellus id dignissim tellus, in dignissim sem.

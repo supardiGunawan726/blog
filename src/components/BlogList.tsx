@@ -44,25 +44,27 @@ export default function BlogList({ posts, search = true }: Props) {
         <For each={filteredPosts()}>
           {(post) => (
             <li>
-              <section>
+              <section class="md:flex md:flex-row-reverse md:gap-4">
                 <a href={`/blog/${post.slug}`}>
-                  <figure class="rounded-[10px] overflow-hidden">
+                  <figure class="rounded-[10px] overflow-hidden md:w-[300px] md:mt-1">
                     <img src={post.data.image} alt={post.data.title} />
                   </figure>
                 </a>
-                <a href={`/blog/${post.slug}`}>
-                  <h4 class="mt-4 font-PlusJakartaSans font-extrabold text-white text-2xl">
-                    {post.data.title}
-                  </h4>
-                </a>
-                <p class="font-Inter text-theme-text leading-normal mt-2">
-                  {dateFns.format(post.data.createdAt, "MMM dd, yyyy")}
-                </p>
-                <a href={`/blog/${post.slug}`}>
-                  <p class="font-Inter text-theme-text leading-normal text-lg mt-2">
-                    {post.data.description}
+                <div>
+                  <a href={`/blog/${post.slug}`}>
+                    <h4 class="mt-4 font-PlusJakartaSans font-extrabold text-white text-2xl md:mt-0 md:text-[28px] md:leading-tight">
+                      {post.data.title}
+                    </h4>
+                  </a>
+                  <p class="font-Inter text-theme-text leading-normal mt-2">
+                    {dateFns.format(post.data.createdAt, "MMM dd, yyyy")}
                   </p>
-                </a>
+                  <a href={`/blog/${post.slug}`}>
+                    <p class="font-Inter text-theme-text leading-normal text-lg mt-2">
+                      {post.data.description}
+                    </p>
+                  </a>
+                </div>
               </section>
             </li>
           )}
