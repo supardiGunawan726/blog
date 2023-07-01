@@ -11,7 +11,7 @@ export const posts = defineCollection({
       .or(z.date())
       .transform((val) => new Date(val)),
     image: z.string(),
-    relatedPosts: z.array(reference("posts")),
+    relatedPosts: z.optional(z.array(reference("posts"))),
   }),
 });
 

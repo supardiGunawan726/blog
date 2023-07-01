@@ -4,6 +4,7 @@ import Page from "../../layouts/Page"
 import me from "../../assets/me.png"
 import * as dateFns from 'date-fns'
 import BlogList from "../../components/BlogList";
+import { Show } from "solid-js";
 
 export async function getStaticPaths() {
 	const posts = await getCollection('posts');
@@ -16,7 +17,7 @@ export async function getStaticPaths() {
 type Props = CollectionEntry<'posts'>;
 
 const post = Astro.props;
-const relatedPosts = await Promise.all(post.data.relatedPosts.map((postRef) => getEntryBySlug(postRef.collection, postRef.slug)));
+const relatedPosts = await Promise.all((post.data.relatedPosts || []).map((postRef) => getEntryBySlug(postRef.collection, postRef.slug)));
 
 const { Content } = await post.render();
 ---
@@ -54,7 +55,9 @@ const { Content } = await post.render();
 			</div>
 		</main>
 	</section>
-	<section class="px-4 py-6 max-w-[720px] mx-auto">
-		<BlogList posts={relatedPosts}/>
-	</section>
+	<Show when={relatedPosts.length > 0}>
+		<section class="px-4 py-6 max-w-[720px] mx-auto">
+			<BlogList posts={relatedPosts}/>
+		</section>
+	</Show>
 </Page>
