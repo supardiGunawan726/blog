@@ -1,7 +1,7 @@
 ---
 title: "Memahami lebih dalam bagaimana ReactJS bekerja"
 createdAt: "2 Jul 2023"
-image: "/posts/ReactJS.png"
+image: "/posts/react.png"
 description: "Memahami lebih dalam bagaimana ReactJS bekerja untuk mengetahui apa yang menjadi kelebihan dan kekurangannya."
 ---
 
@@ -37,7 +37,7 @@ function Hello(){
 
 Tentu saja JSX bukan merupakan fitur bawaan dari standar javascript, sehingga jika kamu jalankan contoh kode pertama pada browser, maka browser tidak akan mengenalinya:
 
-![ReactJS jsx code on browser dev console](/images/ReactJS-on-dev-console.png)
+![ReactJS jsx code on browser dev console](/images/react-on-dev-console.png)
 
 Bisa terlihat terdapat sintaks error, ini dikarenakan JSX bukan merupakan sintaks standar javascript pada browser. Untuk itu, diperlukan alat tambahan seperti `babel` atau `SWC` untuk melakukan transformasi kode dari JSX menjadi kode yang dimengerti browser. Sebagai contoh, jika kamu menyalin kode pertama diatas ke [SWC Playground](https://play.swc.rs/?version=1.3.66&code=H4sIAAAAAAAAA0srzUsuyczPU%2FBIzcnJD88vyknR0KzmUlAoSi0pLcpT0AAyFRRsChSScxKLi%2F0Sc1NtlTJASnXLQWqV7MD6FMAcG%2F0CO6ByTa5aACtSC4FWAAAA&config=H4sIAAAAAAAAA1WPSQ7CMAxF9z1F5DVbWHCHHsIKbpUqk%2BJUIqp6d9JMwM7%2Bg598TELAxhKe4shjXjwGpjD2rHCyEd9ZAZIGWQblI9y6u%2FFlxbBTUc5qQMSwUiwlvrc0aOeYsragZmqaUVYt6ZcnnfGBmP%2BDVxTtqke%2F4qaGBONeezHbHzF5qvgHfEMdNg6D4rk3yxPnB%2BvJL0oTAQAA) dan mengaktifkan JSX, maka hasil kode yang terkompilasi terlihat seperti berikut:
 
