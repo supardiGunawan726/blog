@@ -49,7 +49,14 @@ const { Content } = await post.render();
 				<figure class="rounded-[20px] overflow-hidden max-w-4xl mx-auto">
 					<img src={post.data.image} alt={post.data.title}>
 				</figure>
-				<article class="mt-6 max-w-4xl mx-auto prose-lg prose-p:font-Inter prose-p:text-lg md:prose-p:text-2xl prose-p:text-theme-text prose-p:leading-normal md:prose-p:leading-normal prose-headings:font-PlusJakartaSans prose-headings:font-extrabold prose-headings:text-white prose-headings:my-6 prose-h2:text-2xl prose-code:text-base md:prose-code:text-xl prose-code:bg-[#24292e] prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-a:text-yellow-500 hover:prose-a:underline">
+				<article 
+						class="mt-6 max-w-4xl mx-auto prose-lg 
+						prose-p:font-Inter prose-p:text-lg md:prose-p:text-2xl  prose-p:text-theme-text prose-p:leading-normal md:prose-p:leading-normal
+						prose-headings:font-PlusJakartaSans prose-headings:font-extrabold prose-headings:text-white prose-headings:my-6 prose-h2:text-2xl
+						prose-code:text-base md:prose-code:text-xl prose-code:bg-[#24292e] prose-code:px-1 prose-code:py-0.5 prose-code:rounded
+						prose-a:text-yellow-500 hover:prose-a:underline
+						prose-ul:list-disc
+						prose-li:font-Inter prose-li:text-lg md:prose-li:text-2xl  prose-li:text-theme-text prose-li:leading-normal md:prose-li:leading-normal">
 					<Content/>
 				</article>
 			</div>
