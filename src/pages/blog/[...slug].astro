@@ -29,8 +29,8 @@ const { Content } = await post.render();
 		basic: {
 			type: "article",
 			title: post.data.title,
-			image: `${Astro.url.host}${post.data.image}`,
-			url: Astro.url.href
+			image: `${import.meta.env.SITE}${post.data.image}`,
+			url: `${import.meta.env.SITE}${Astro.url.pathname}`
 		}
 	}
 }}>
