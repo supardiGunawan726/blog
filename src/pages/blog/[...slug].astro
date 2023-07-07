@@ -1,6 +1,6 @@
 ---
 import { CollectionEntry, getCollection, getEntryBySlug } from "astro:content";
-import Page from "../../layouts/Page"
+import Page from "../../layouts/Page.astro"
 import me from "../../assets/me.png"
 import * as dateFns from 'date-fns'
 import BlogList from "../../components/BlogList";
@@ -22,7 +22,18 @@ const relatedPosts = await Promise.all((post.data.relatedPosts || []).map((postR
 const { Content } = await post.render();
 ---
 
-<Page title={post.data.title}>
+<Page meta={{
+	title: post.data.title,
+	description: post.data.description,
+	openGraph: {
+		basic: {
+			type: "article",
+			title: post.data.title,
+			image: `${Astro.url.host}${post.data.image}`,
+			url: Astro.url.href
+		}
+	}
+}}>
 	<nav class="block p-4 border-b border-b-theme-text/10">
 		<div class="max-w-4xl maxw mx-auto">
 			<a href="/" class="w-max flex items-center gap-3 text-white text-lg font-Inter font-bold">

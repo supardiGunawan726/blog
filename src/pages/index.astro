@@ -1,5 +1,5 @@
 ---
-import Page from "../layouts/Page";
+import Page from "../layouts/Page.astro";
 import bgLinesMobile from "../assets/images/pages/home/lines@mobile.png"
 import bgLinesDesktop from "../assets/images/pages/home/lines@desktop.png"
 import githubIcon from '../assets/icons/github.svg'
@@ -9,7 +9,7 @@ import { getCollection } from 'astro:content';
 const posts = await getCollection("posts");
 ---
 
-<Page title="Supardi's Blog">
+<Page meta={{ title: "Supardi's blog" }} >
 	<section class="relative border-b border-b-theme-text/10">
 		<figure class="absolute top-0 left-0 right-0 bottom-0 z-0">
 			<img class="sm:hidden" src={bgLinesMobile.src} width={bgLinesMobile.width} height={bgLinesMobile.height} alt="lines">
